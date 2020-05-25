@@ -7,6 +7,9 @@
 
 **Brain-Calc**
 [![asciicast](https://asciinema.org/a/acwAzJ9YIb7bl20llFOpYnFGZ.svg)](https://asciinema.org/a/acwAzJ9YIb7bl20llFOpYnFGZ)
+<<<<<<< HEAD
 
 **Brain-GCD**
 [![asciicast](https://asciinema.org/a/858BtZmZSrlbodnwPWT3bRega.svg)](https://asciinema.org/a/858BtZmZSrlbodnwPWT3bRega)
+=======
+>>>>>>> 11a116079d302b7de0384e74ec621a7a93fa516e
