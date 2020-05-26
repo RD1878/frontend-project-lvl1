@@ -1,4 +1,4 @@
-#BRAIN-GAMES
+# BRAIN-GAMES
 
 [![Node CI](https://github.com/RD1878/frontend-project-lvl1/workflows/Node%20CI/badge.svg)](https://github.com/RD1878/frontend-project-lvl1/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/maintainability)](https://codeclimate.com/github/RD1878/frontend-project-lvl1/maintainability)
@@ -10,9 +10,13 @@
 $ make install
 ```
 
-[![asciicast](https://asciinema.org/a/Mk0J3zJq5HKWP1kBf3u5hZFx0.svg)](https://asciinema.org/a/Mk0J3zJq5HKWP1kBf3u5hZFx0)
+```
+$ npm link
+```
 
-##Run games
+[![asciicast](https://asciinema.org/a/lkVibo1sGGcNWltIvTfqC6tnu.svg)](https://asciinema.org/a/lkVibo1sGGcNWltIvTfqC6tnu)
+
+## Run games
 
 **Brain-Even**
 
