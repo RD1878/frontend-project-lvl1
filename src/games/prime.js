@@ -1,23 +1,30 @@
 import brainGame from '../index.js';
-import greeting from '../cli.js';
-import randomNumber from '../utilities/randomNumber.js';
-import isEven from '../utilities/isEven.js';
+import getRandomNumber from '../utilities/randomNumber.js';
 
 const gamePrime = () => {
-  const question = () => {
-    console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
-  };
-
-  const getRightAnswer = () => {
-    const num = randomNumber();
+  const question = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+  const getTask = () => {
+    const num = getRandomNumber(1, 100);
+    const isEven = (number) => {
+      for (let i = 2; i < number; i += 1) {
+        if (number % i === 0) {
+          return false;
+        }
+      }
+      return true;
+    };
     if (isEven(num) && num > 1) {
-      console.log(`Question: ${num}`);
-      return 'yes';
+      return {
+        question: `Question: ${num}`,
+        rightAnswer: 'yes',
+      };
     }
-    console.log(`Question: ${num}`);
-    return 'no';
+    return {
+      question: `Question: ${num}`,
+      rightAnswer: 'no',
+    };
   };
-  brainGame(greeting, question, getRightAnswer);
+  brainGame(question, getTask);
 };
 
 export default gamePrime;

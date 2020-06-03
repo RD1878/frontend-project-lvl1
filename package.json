@@ -3,6 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "keywords": [
+    "game",
+    "logic",
+    "mathematics",
+    "brain",
+    "brain-games"
+  ],
   "bin": {
     "brain-even": "bin/brain-even.js",
     "brain-calc": "bin/brain-calc.js",

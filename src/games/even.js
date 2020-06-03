@@ -1,22 +1,22 @@
 import brainGame from '../index.js';
-import greeting from '../cli.js';
-import randomNumber from '../utilities/randomNumber.js';
+import getRandomNumber from '../utilities/randomNumber.js';
 
 const gameEven = () => {
-  const question = () => {
-    console.log('Answer "yes" if number even otherwise answer "no".');
-  };
-
-  const getRightAnswer = () => {
-    const num = randomNumber();
+  const question = 'Answer "yes" if number even otherwise answer "no".';
+  const getTask = () => {
+    const num = getRandomNumber(1, 100);
     if (num % 2 === 0) {
-      console.log(`Question: ${num}`);
-      return 'yes';
+      return {
+        question: `Question: ${num}`,
+        rightAnswer: 'yes',
+      };
     }
-    console.log(`Question: ${num}`);
-    return 'no';
+    return {
+      question: `Question: ${num}`,
+      rightAnswer: 'no',
+    };
   };
-  brainGame(greeting, question, getRightAnswer);
+  brainGame(question, getTask);
 };
 
 export default gameEven;

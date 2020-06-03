@@ -1,12 +1,9 @@
 import brainGame from '../index.js';
-import greeting from '../cli.js';
-import randomNumber from '../utilities/randomNumber.js';
+import getRandomNumber from '../utilities/randomNumber.js';
 
 const gameGcd = () => {
-  const question = () => {
-    console.log('Find the greatest common divisor of given numbers.');
-  };
-  const getRightAnswer = () => {
+  const question = 'Find the greatest common divisor of given numbers.';
+  const getTask = () => {
     const getMaxDivisor = (a, b) => {
       if (a === b && a !== 0 && b !== 0) {
         return a;
@@ -19,12 +16,14 @@ const gameGcd = () => {
       }
       return a === 0 ? b : getMaxDivisor(b, a);
     };
-    const num1 = randomNumber();
-    const num2 = randomNumber();
-    console.log(`Question: ${num1} ${num2}`);
-    return String(getMaxDivisor(num1, num2));
+    const num1 = getRandomNumber(1, 100);
+    const num2 = getRandomNumber(1, 10);
+    return {
+      question: `Question: ${num1} ${num2}`,
+      rightAnswer: String(getMaxDivisor(num1, num2)),
+    };
   };
-  brainGame(greeting, question, getRightAnswer);
+  brainGame(question, getTask);
 };
 
 export default gameGcd;
