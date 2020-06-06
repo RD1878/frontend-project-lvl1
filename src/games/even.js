@@ -1,22 +1,18 @@
-import brainGame from '../index.js';
+import startBrainGame from '../index.js';
 import getRandomNumber from '../utilities/randomNumber.js';
 
+const description = 'Answer "yes" if number even otherwise answer "no".';
+const conditionWord = 'Question:';
+const isEven = (num) => num % 2 === 0;
+const getTask = () => {
+  const num = getRandomNumber(1, 100);
+  const condition = `${conditionWord} ${num}`;
+  const rightAnswer = isEven(num) ? 'yes' : 'no';
+  return { condition, rightAnswer };
+};
+
 const gameEven = () => {
-  const question = 'Answer "yes" if number even otherwise answer "no".';
-  const getTask = () => {
-    const num = getRandomNumber(1, 100);
-    if (num % 2 === 0) {
-      return {
-        question: `Question: ${num}`,
-        rightAnswer: 'yes',
-      };
-    }
-    return {
-      question: `Question: ${num}`,
-      rightAnswer: 'no',
-    };
-  };
-  brainGame(question, getTask);
+  startBrainGame(description, getTask);
 };
 
 export default gameEven;

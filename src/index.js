@@ -1,21 +1,22 @@
 import readlineSync from 'readline-sync';
-import greeting from './cli.js';
 
-const brainGame = (question, getTask) => {
+const roundsCount = 3;
+
+const startBrainGame = (description, getTask) => {
   console.log('Welcome to the Brain Games!');
-  const userName = greeting();
+  const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}`);
-  console.log(question);
+  console.log(description);
   const count = (n) => {
-    if (n === 3) {
+    if (n === roundsCount) {
       console.log(`Congratulations, ${userName}!`);
       return;
     }
-    const task = getTask();
-    console.log(task.question);
+    const { condition, rightAnswer } = getTask();
+    console.log(condition);
     const answer = readlineSync.question('Your answer: ');
-    if (answer !== task.rightAnswer) {
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${task.rightAnswer}'.`);
+    if (answer !== rightAnswer) {
+      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
       console.log(`Let's try again, ${userName}!`);
       return;
     }
@@ -25,4 +26,4 @@ const brainGame = (question, getTask) => {
   count(0);
 };
 
-export default brainGame;
+export default startBrainGame;
