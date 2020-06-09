@@ -1,32 +1,34 @@
 import startBrainGame from '../index.js';
+import getRandomNumber from '../utilities/randomNumber.js';
+
+const getProgression = (startNum, stepProgression, lenProgression) => {
+  const progression = [startNum];
+  for (let i = 0; i < lenProgression; i += 1) {
+    progression.push(progression[i] + stepProgression);
+  }
+  return progression;
+};
 
 const description = 'What number is missing in the progression?';
-const conditionWord = 'Question:';
-const getTask = () => {
-  const getLostNumber = (array, index) => {
-    const leftArray = array.slice(0, index);
-    const rightArray = array.slice(index + 1);
-    const questionArray = [...leftArray, '..', ...rightArray];
-    const stringOfQuestionArray = questionArray.join(' ');
-    const condition = `${conditionWord} ${stringOfQuestionArray}`;
-    const rightAnswer = String(array[index]);
+
+const getRoundData = () => {
+  const getLostNumber = (progression, indexOfLostElement) => {
+    const rightAnswer = String(progression[indexOfLostElement]);
+    const questionProgression = progression;
+    questionProgression[indexOfLostElement] = '..';
+    const condition = questionProgression.join(' ');
     return { condition, rightAnswer };
   };
-  const randomIndex = Math.floor(Math.random() * 10);
-  const randomArray = () => {
-    const startNum = Math.floor(Math.random() * 10);
-    const step = Math.floor(Math.random() * 10);
-    const array = [startNum];
-    for (let i = 0; i < 9; i += 1) {
-      array.push(array[i] + step);
-    }
-    return array;
-  };
-  return getLostNumber(randomArray(), randomIndex);
+  const indexOfLostElement = getRandomNumber(0, 9);
+  const startNum = getRandomNumber(0, 9);
+  const stepProgression = getRandomNumber(1, 9);
+  const lenProgression = getRandomNumber(10, 15);
+  const progression = getProgression(startNum, stepProgression, lenProgression);
+  return getLostNumber(progression, indexOfLostElement);
 };
 
 const gameProgression = () => {
-  startBrainGame(description, getTask);
+  startBrainGame(description, getRoundData);
 };
 
 export default gameProgression;
