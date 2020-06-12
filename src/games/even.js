@@ -5,7 +5,7 @@ const description = 'Answer "yes" if number even otherwise answer "no".';
 const isEven = (num) => num % 2 === 0;
 const getRoundData = () => {
   const num = getRandomNumber(1, 100);
-  const condition = num;
+  const condition = String(num);
   const rightAnswer = isEven(num) ? 'yes' : 'no';
   return { condition, rightAnswer };
 };

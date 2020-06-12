@@ -1,10 +1,11 @@
 import startBrainGame from '../index.js';
 import getRandomNumber from '../utilities/randomNumber.js';
 
-const getProgression = (startNum, stepProgression, lenProgression) => {
-  const progression = [startNum];
+const makeProgression = (startNum, stepProgression, lenProgression) => {
+  const progression = [];
   for (let i = 0; i < lenProgression; i += 1) {
-    progression.push(progression[i] + stepProgression);
+    const currentNum = startNum + i * stepProgression;
+    progression.push(currentNum);
   }
   return progression;
 };
@@ -12,19 +13,16 @@ const getProgression = (startNum, stepProgression, lenProgression) => {
 const description = 'What number is missing in the progression?';
 
 const getRoundData = () => {
-  const getLostNumber = (progression, indexOfLostElement) => {
-    const rightAnswer = String(progression[indexOfLostElement]);
-    const questionProgression = progression;
-    questionProgression[indexOfLostElement] = '..';
-    const condition = questionProgression.join(' ');
-    return { condition, rightAnswer };
-  };
-  const indexOfLostElement = getRandomNumber(0, 9);
   const startNum = getRandomNumber(0, 9);
   const stepProgression = getRandomNumber(1, 9);
   const lenProgression = getRandomNumber(10, 15);
-  const progression = getProgression(startNum, stepProgression, lenProgression);
-  return getLostNumber(progression, indexOfLostElement);
+  const progression = makeProgression(startNum, stepProgression, lenProgression);
+  const lastIndexOfProgression = progression.length - 1;
+  const indexOfLostElement = getRandomNumber(0, lastIndexOfProgression);
+  const rightAnswer = String(progression[indexOfLostElement]);
+  progression[indexOfLostElement] = '..';
+  const condition = progression.join(' ');
+  return { condition, rightAnswer };
 };
 
 const gameProgression = () => {
